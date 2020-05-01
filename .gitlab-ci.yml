@@ -10,6 +10,10 @@ variables:
     URL_MAVEN_SETTINGS: https://api.github.com/repos/EBIvariation/configuration/contents/eva-maven-settings.xml
     MEDIA_TYPE: application/vnd.github.raw
 
+cache:
+    paths:
+        - .m2/repository/
+
 before_script:
     - export DATETIME=$(date +%Y-%m-%dT%H-%M-%S)
 
@@ -26,6 +30,7 @@ test:
     only:
         - master
         - tags
+        - feature/use-maven-settings-config-file
 
 # Not executed, parent job definition for package
 .package:
@@ -62,6 +67,7 @@ package-development:
         MAVEN_PROFILE: development
     only:
         - master
+        - feature/use-maven-settings-config-file
 
 package-production:
     extends: .package
@@ -105,6 +111,7 @@ deploy-tomcat-development:
         - package-development
     only:
         - master
+        - feature/use-maven-settings-config-file
 
 deploy-tomcat-production:
     extends: .deploy-tomcat
