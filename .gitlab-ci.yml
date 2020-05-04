@@ -9,13 +9,14 @@ variables:
     MAVEN_SETTINGS: maven-settings.xml
     URL_MAVEN_SETTINGS: https://api.github.com/repos/EBIvariation/configuration/contents/eva-maven-settings.xml
     MEDIA_TYPE: application/vnd.github.raw
+    DATETIME: $(date +%Y-%m-%dT%H-%M-%S)
 
 cache:
     paths:
         - .m2/repository/
 
-before_script:
-    - export DATETIME=$(date +%Y-%m-%dT%H-%M-%S)
+#before_script:
+#    - export DATETIME=$(date +%Y-%m-%dT%H-%M-%S)
 
 test:
     stage: test
