@@ -54,6 +54,7 @@ test:
         paths:
             - $WS_ARTIFACT_PATH
             - $CLUSTERING_ARTIFACT_PATH
+            - $VARIABLES_FILE
 
 package-internal:
     extends: .package
